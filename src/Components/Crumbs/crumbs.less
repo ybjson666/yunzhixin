@@ -1,0 +1,38 @@
+.crums-bar{
+    padding: 10px 5px;
+    box-sizing: border-box;
+    .menu-lists{
+        display: flex;
+        margin-bottom: 0;
+        height: 30px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #e5e5e5;
+        li{
+            width: 120px;
+            height: 30px;
+            position: relative;
+            border:1px solid #e5e5e5;
+            border-radius: 3px;
+            box-sizing: border-box;
+            .close-btn{
+                position: absolute;
+                display: block;
+                width: 20px;
+                height: 20px;
+                background: url('./images/close2.png') no-repeat;
+                background-size: 100%;
+                top:5px;
+                right: 2px;
+                cursor: pointer;
+            }
+            a{
+                display: block;
+                text-align: center;
+                line-height: 30px;
+            }
+        }
+        .active{
+            border-bottom: 1px solid #fff;
+        }
+    }
+}
