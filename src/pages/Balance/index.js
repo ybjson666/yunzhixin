@@ -1,66 +1,62 @@
 import React,{ Component }from 'react';
-import { Tabs,Input,Table,Row,Col, Button,Form} from 'antd';
-import './instCheck.less';
-
+import { Tabs,Input,Table,Row,Col, Button,Form,DatePicker,ConfigProvider,Select} from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn';
+import './balance.less';
 
 
 const { TabPane } = Tabs;
+const { RangePicker } = DatePicker;
+const { Option } = Select;
 
-export default class InstCheck extends Component{
+export default class Balance extends Component{
 
     state={
         instDatas:[]
     }
 
     componentDidMount=()=>{
+
         const instDatas=[
             {
-                instNum: 'DLS0800001',
-                instName: "测试机构",
-                superNum: 'ASSH154',
-                contactor:"秦原伟",
-                area:"181,level178,",
-                status:"未审核",
-                remark:"暂无",
-                comer:"测试机构",
+                accountNum:'622558866885',
+                instNum: "DLS0832059",
+                instName:"充值机构",
+                balance: '2000.00',
                 createTime:"2019-04-17 15:35:23",
                 id:"001"
             },
             {
-                instNum: 'DLS0800001',
-                instName: "测试机构",
-                superNum: 'ASSH154',
-                contactor:"秦原伟",
-                area:"181,level178,",
-                status:"审核通过",
-                remark:"暂无",
-                comer:"测试机构",
+                accountNum:'622558866885',
+                instNum: "DLS0832059",
+                instName:"充值机构",
+                balance: '2000.00',
                 createTime:"2019-04-17 15:35:23",
                 id:"002"
             },
             {
-                instNum: 'DLS0800001',
-                instName: "测试机构",
-                superNum: 'ASSH154',
-                contactor:"秦原伟",
-                area:"181,level178,",
-                status:"未审核",
-                remark:"暂无",
-                comer:"测试机构",
+                accountNum:'622558866885',
+                instNum: "DLS0832059",
+                instName:"充值机构",
+                balance: '2000.00',
                 createTime:"2019-04-17 15:35:23",
                 id:"003"
             },
             {
-                instNum: 'DLS0800001',
-                instName: "测试机构",
-                superNum: 'ASSH154',
-                contactor:"秦原伟",
-                area:"181,level178,",
-                status:"审核通过",
-                remark:"暂无",
-                comer:"测试机构",
+                accountNum:'622558866885',
+                instNum: "DLS0832059",
+                instName:"充值机构",
+                balance: '2000.00',
                 createTime:"2019-04-17 15:35:23",
                 id:"004"
+            },
+            {
+                accountNum:'622558866885',
+                instNum: "DLS0832059",
+                instName:"充值机构",
+                balance: '2000.00',
+                createTime:"2019-04-17 15:35:23",
+                id:"005"
             }
         ]
 
@@ -96,137 +92,119 @@ export default class InstCheck extends Component{
 
         const columns=[
             {
-                title: '代理商编号',
+                title: '账户编号',
+                dataIndex: 'accountNum',
+                key: 'chargeNum',
+            },
+            {
+                title: '机构编号',
                 dataIndex: 'instNum',
                 key: 'instNum',
             },
             {
-                title: '代理商全称',
+                title: '机构名称',
                 dataIndex: 'instName',
                 key: 'instName',
             },
             {
-                title: '代理商上级编号',
-                dataIndex: 'superNum',
-                key: 'superNum',
+                title: '余额',
+                dataIndex: 'balance',
+                key: 'balance',
             },
             {
-                title: '联系人',
-                dataIndex: 'contactor',
-                key: 'contactor',
-            },
-            {
-                title: '归属区域',
-                dataIndex: 'area',
-                key: 'area',
-            },
-            {
-                title: '状态',
-                dataIndex: 'status',
-                key: 'status',
-                render:(text,record)=>{
-                    return <span className={text==='审核通过'?'pass':null}>{text}</span>
-                }
-            },
-            {
-                title: '备注',
-                dataIndex: 'remark',
-                key: 'remark',
-            },
-            {
-                title: '进件者',
-                dataIndex: 'comer',
-                key: 'comer',
-            },
-            {
-                title: '进件时间',
+                title: '日期',
                 dataIndex: 'createTime',
                 key: 'createTime',
-            },
-            {
-                title: '操作',
-                dataIndex: 'operate',
-                key: 'operate',
-                render:()=>(
-                    <div className="operate-wraps">
-                        <span >审核</span>
-                    </div>
-                )
-            }
-            
+            } 
         ]
 
         return(
-            <div className="inst-container">
+            <div className="balance-container">
                 <Tabs defaultActiveKey="1" className="tab-block">
-                    <TabPane tab="代理商审核信息列表" key="1">
+                    <TabPane tab="账户明细列表" key="1">
                         <div className="tab-items">
                             <div className="form-block">
                                 <Form className='form-part' {...formItemLayout} >
                                     <Row>
                                         <Col span={5}>
                                             <Form.Item style={{ 'marginBottom': '0', width: '100%' }} {...tailFormItemLayout} 
-                                                label="代理商编号:" 
-                                                instnum="instnum"
+                                                label="账户编号:" 
+                                                accountnum="accountnum"
                                                 rules={
                                                     [
                                                         {
                                                             required: false,
-                                                            message: '请输入代理商编号'
+                                                            message: '请输入账户编号'
                                                         }
                                                     ]
                                                 }
                                             >
-                                                <Input  placeholder='请输入代理商编号'/>
+                                                <Input  placeholder='请输入账户编号'/>
                                             </Form.Item>
                                         </Col>
                                         <Col span={5}>
                                             <Form.Item style={{ 'marginBottom': '0', width: '100%' }} {...tailFormItemLayout} 
-                                                label="代理商全称:" 
-                                                agentname="agentname"
+                                                label="业务类型:" 
+                                                businesstype="businesstype"
                                                 rules={
                                                     [
                                                         {
                                                             required: false,
-                                                            message: '请输入代理商全称'
+                                                            message: '请选择业务类型'
                                                         }
                                                     ]
                                                 }
                                             >
-                                                <Input  placeholder='请输入代理商全称'/>
+                                                <Select placeholder="请选业务类型">
+                                                    <Option value="1">全部</Option>
+                                                    <Option value="2">系统调账</Option>
+                                                    <Option value="3">代付出款</Option>
+                                                    <Option value="4">代付退款</Option>
+                                                    <Option value="5">代收入账</Option>
+                                                </Select>
                                             </Form.Item> 
                                         </Col>
                                         <Col span={5}>
                                             <Form.Item style={{ 'marginBottom': '0', width: '100%' }} {...tailFormItemLayout} 
-                                                label="联系人:" 
-                                                contactor="contactor"
+                                                label="资金标识:" 
+                                                moneymark="moneymark"
                                                 rules={
                                                     [
                                                         {
                                                             required: false,
-                                                            message: '请输入联系人'
+                                                            message: '请选择资金标识'
                                                         }
                                                     ]
                                                 }
                                             >
-                                                <Input  placeholder='请输入联系人'/>
+                                                <Select placeholder="请选择资金标识">
+                                                    <Option value="1">全部</Option>
+                                                    <Option value="2">加</Option>
+                                                    <Option value="3">减</Option>
+                                                </Select>
                                             </Form.Item> 
                                         </Col>
-                                        <Col span={5}>
+                                        <Col span={6} style={{marginLeft:-80}}>
                                             <Form.Item style={{ 'marginBottom': '0', width: '100%' }} {...tailFormItemLayout} 
-                                                label="备注:" 
-                                                remark="remark"
+                                                label="交易日期:" 
+                                                tradetime="tradetime"
                                                 rules={
                                                     [
                                                         {
                                                             required: false,
-                                                            message: '请输入备注'
+                                                            message: '请输入充值单号'
                                                         }
                                                     ]
                                                 }
-                                            >
-                                                <Input  placeholder='请输入备注'/>
-                                            </Form.Item> 
+                                            >   
+                                                <ConfigProvider locale={zh_CN}>
+                                                    <RangePicker
+                                                        showTime={{ format: 'YYYY-MM-DD' }}
+                                                        format="YYYY-MM-DD"
+                                                    />
+                                                </ConfigProvider>
+                                                
+                                            </Form.Item>
                                         </Col>
                                         <Col span={1} style={{marginLeft:-80}}>
                                             <Button type="primary">查询</Button>

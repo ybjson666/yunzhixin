@@ -26,17 +26,15 @@ class NavBar extends Component{
         return(
             <div className="nav-bar">
                 <Menu
-                    style={{ width: 160 }}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    style={{ width: 180 }}
                     mode="inline"
                 >
                     {
-                        navMenus.map((menu,index)=>(
-                            <SubMenu key={index}  title={menu.name}>
+                        navMenus.map((menu)=>(
+                            <SubMenu key={menu.order}  title={menu.name}>
                                 {
-                                    menu.children.map((subMenu,keys)=>(
-                                        <Menu.Item key={keys} icon={<AppstoreOutlined />}>
+                                    menu.children.map((subMenu)=>(
+                                        <Menu.Item key={subMenu.suborder} icon={<AppstoreOutlined />}>
                                             <Link to={subMenu.path} onClick={()=>{this.handleClick(subMenu)}}>{subMenu.name}</Link>
                                         </Menu.Item>
                                     ))

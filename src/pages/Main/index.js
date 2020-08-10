@@ -20,7 +20,7 @@ export default class Main extends Component{
                 <Layout>
                     <Header/>
                     <Layout>
-                        <Sider width={170}>
+                        <Sider width={190}>
                             <NavBar/>
                         </Sider>
                         <Content>

@@ -1,111 +1,142 @@
 export const navMenus=[
     {
         name:'首页管理',
+        order:1,
         children:[
             {
                 name:"首页",
-                path:'/'
+                path:'/',
+                suborder:1
             }
         ]
     },
     {
         name:'机构管理',
+        order:2,
         children:[
             {
                 name:"机构信息",
-                path:'/instInfo'
+                path:'/instInfo',
+                suborder:2
             },
             {
                 name:"机构费率",
-                path:'/instPercent'
+                path:'/instPercent',
+                suborder:3
             },
             {
                 name:"机构审核",
-                path:'/instCheck'
+                path:'/instCheck',
+                suborder:4
             }
         ]
     },
     {
         name:'账户中心',
+        order:3,
         children:[
             {
                 name:"账户信息",
-                path:'/accountInfo'
+                path:'/accountInfo',
+                suborder:5
             },
             {
                 name:"账户充值历史",
-                path:'/accountCharge'
+                path:'/accountCharge',
+                suborder:6
+            },
+            {
+                name:"账户调账",
+                path:'/accountCtrol',
+                suborder:7
             },
             {
                 name:"调账审核",
-                path:'/accountCheck'
+                path:'/accountCheck',
+                suborder:8
             },
             {
                 name:"日终余额查询",
-                path:'/balance'
+                path:'/balance',
+                suborder:9
             }
         ]
     },
     {
         name:'交易管理',
+        order:4,
         children:[
             {
                 name:"交易记录",
-                path:'/dealRecord'
+                path:'/dealRecord',
+                suborder:10
             },
             {
                 name:"交易对账",
-                path:'/dealChecking'
+                path:'/dealChecking',
+                suborder:11
             },
             {
                 name:"交易累计",
-                path:'/dealSum'
+                path:'/dealSum',
+                suborder:12
             },
             {
                 name:"客户交易统计",
-                path:'/dealCcount'
+                path:'/dealCcount',
+                suborder:13
             }
         ]
     },
     {
         name:'发票管理',
+        order:5,
         children:[
             {
                 name:"发票申请",
-                path:'/billApply'
+                path:'/billApply',
+                suborder:14
             },
             {
                 name:"邮寄地址",
-                path:'/address'
+                path:'/address',
+                suborder:15
             },
             {
                 name:"发票审核",
-                path:'/billCheck'
+                path:'/billCheck',
+                suborder:16
             }
         ]
     },
     {
         name:'风险管理',
+        order:6,
         children:[
             {
                 name:"资质业务核实",
-                path:'/businessVerify'
+                path:'/businessVerify',
+                suborder:17
             },
             {
                 name:"董监高灰名单",
-                path:'/grayList'
+                path:'/grayList',
+                suborder:18
             },
             {
                 name:"风控黑名单",
-                path:'/blankList'
+                path:'/blankList',
+                suborder:19
             },
             {
                 name:"交易限额风控",
-                path:'/riskCtrol'
+                path:'/riskCtrol',
+                suborder:20
             },
             {
                 name:"调单管理",
-                path:'/manager'
+                path:'/manager',
+                suborder:21
             }
         ]
     }
